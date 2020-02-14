@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ProjetodeBloco.Models.Usuario>
+
+@{
+    ViewBag.Title = "ListaAmigos";
+    Layout = "~/Views/Shared/LayoutDeEntrada.cshtml";
+}
+
+<h2>Amigos</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataDeNascimento)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataDeNascimento)
+        </td>
+
+
+        <td>
+            <a href="@Url.Action("DeletarAmigo", "Amigo", new { DelId = item.UsuarioId })" class="btn btn-default btn-sm">
+                Deletar Amigo
+
+            </a>
+        </td>
+    </tr>
+}
+
+</table>
